@@ -2,11 +2,14 @@
 
 YouTube 一体化脚本部署于此。
 
-## 🔗 快速链接
+## 🔗 一键订阅链接
 
-- [YouTubePlus.stoverride](https://raw.githubusercontent.com/Co1m/stash-works/main/Stash/YouTube/YouTubePlus.stoverride)
-- [youtube-plus.js](https://raw.githubusercontent.com/Co1m/stash-works/main/Stash/YouTube/youtube-plus.js)
+点击下方链接并在 Stash 中打开：
 
-## 🚀 使用方法
+- [YouTubePlus.stoverride](https://raw.githubusercontent.com/Co1m/stash-works/main/YouTubePlus.stoverride)
 
-直接在 Stash 中订阅上述 stoverride 链接即可。
+## 🚀 快速使用
+
+1. 复制链接: `https://raw.githubusercontent.com/Co1m/stash-works/main/YouTubePlus.stoverride`
+2. 在 Stash -> 覆写 -> 从 URL 下载 中粘贴并安装。
+3. 确保已开启 MITM 并信任证书。
