@@ -1,0 +1,20 @@
+#!name=YouTube 一体化脚本
+#!desc=集成 YouTube 去广告与字幕翻译功能。基于 Maasea 的方案优化。
+#!author=Manus
+#!system=ios
+
+[Rule]
+# 屏蔽 YouTube UDP 流量以强制回退到 HTTPS 拦截
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+
+[Script]
+# YouTube 响应拦截：去广告 + 字幕翻译
+youtube-plus = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Co1m/stash-works/main/youtube-plus.js,argument='{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"blockShorts":false,"debug":false}'
+
+[Map Local]
+# 屏蔽播放初始化中的广告加载
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
+
+[MITM]
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com
